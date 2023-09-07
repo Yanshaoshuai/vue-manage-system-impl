@@ -52,7 +52,7 @@ export const useTestApi = () => {
 
 export const getRolesByNameApi= (name:string) => {
     return request({
-        url: `/api/role?keyword=${name}`,
+        url: `/api/role/keyword?keyword=${name}`,
         method: "get"
     })
 }

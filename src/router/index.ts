@@ -28,25 +28,37 @@ const routes: RouteRecordRaw[] = [
                     title: '用户',
                     permiss: '2',
                 },
-                component: () => import(/* webpackChunkName: "table" */ '../views/user.vue'),
-            },
-            {
-                path: '/user/edit/:id',
-                name: 'edituser',
-                meta: {
-                    title: '编辑',
-                    permiss: '2',
-                },
-                component: () => import(/* webpackChunkName: "table" */ '../views/edituser.vue'),
-            },
-            {
-                path: '/user/add',
-                name: 'addUser',
-                meta: {
-                    title: '添加用户',
-                    permiss: '2',
-                },
-                component: () => import(/* webpackChunkName: "table" */ '../views/adduser.vue'),
+                redirect: '/user/list',
+                component: () => import(/* webpackChunkName: "table" */ '../views/user/user.vue'),
+                children:[
+                    {
+                        path: '/user/list',
+                        name: 'userlist',
+                        meta: {
+                            title: '用户列表',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/user/list.vue'),
+                    },
+                    {
+                        path: '/user/edit/:id',
+                        name: 'edituser',
+                        meta: {
+                            title: '编辑用户',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/user/edituser.vue'),
+                    },
+                    {
+                        path: '/user/add',
+                        name: 'addUser',
+                        meta: {
+                            title: '添加用户',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/user/adduser.vue'),
+                    }
+                ]
             },
             {
                 path: '/charts',
@@ -117,7 +129,7 @@ const routes: RouteRecordRaw[] = [
                 meta: {
                     title: '个人中心',
                 },
-                component: () => import(/* webpackChunkName: "user" */ '../views/user.vue'),
+                component: () => import(/* webpackChunkName: "user" */ '../views/user/user.vue'),
             },
             {
                 path: '/editor',
