@@ -24,7 +24,6 @@
                          :trigger-on-focus="true"
                          placeholder="请输入内容"
                          @select="handleSelect"
-                         @blur="handleBlur"
                          v-if="inputVisible"
                          ref="AutocompleteRef">
         </el-autocomplete>
@@ -47,9 +46,10 @@
 
 <script setup lang="ts">
 import {nextTick, PropType, ref} from 'vue'
-import {getRolesByNameApi,getUserDetailByIdApi} from "../api";
 import {AutocompleteFetchSuggestionsCallback, ElAutocomplete, ElInput, ElMessage} from "element-plus";
-import UserInfo from "../interface/UserInfo";
+import UserInfo from "../../interface/UserInfo";
+import RoleInfo from "../../interface/RoleInfo";
+import {getRolesByNameApi} from "../../api/role";
 
 const props = defineProps({
   userDetail: {
@@ -77,7 +77,7 @@ const cancel= () => {
 }
 const AutocompleteRef = ref<InstanceType<typeof ElAutocomplete>>()
 const queryRoles = (queryString: string, cb: AutocompleteFetchSuggestionsCallback) => {
-  let roles = [];
+  let roles:RoleInfo[] = [];
   let query = async () => {
     await getRolesByNameApi(queryString).then(res => {
       roles = res.data.data;
@@ -91,15 +91,12 @@ const queryRoles = (queryString: string, cb: AutocompleteFetchSuggestionsCallbac
 }
 const inputVisible = ref(false);
 const showInput = () => {
-  console.log("showInput")
   inputVisible.value = true
   nextTick(() => {
     AutocompleteRef.value!.inputRef!.focus();
   })
 }
 const handleSelect = (item: any) => {
-  // console.log(item)
-  console.log("handleSelect")
   if (inputValue.value) {
     props.userDetail.roles.push({id: item.id, name: item.value})
   }

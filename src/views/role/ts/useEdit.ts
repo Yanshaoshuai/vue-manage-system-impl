@@ -1,32 +1,30 @@
 import {useRoute, useRouter} from "vue-router";
 import {ElMessage} from "element-plus";
 import {onMounted, ref} from "vue";
-import UserInfo from "../../../interface/UserInfo";
-import {getUserDetailByIdApi, updateByIdApi} from "../../../api/user";
+import RoleInfo from "../../../interface/RoleInfo";
+import {getRoleByIdApi, updateRoleByIdApi} from "../../../api/role";
 
 function useEdit() {
     let router = useRouter();
     let route = useRoute();
-    let userDetail = ref<UserInfo>(
+    let roleDetail = ref<RoleInfo>(
         {
-            username: "",
-            password: "",
-            roles: [],
-            enabled: false
+            name: "",
+            description:"",
+            permissions:[]
         }
     )
     onMounted(() => {
-        getUserDetail();
+        getRoleDetail();
     })
-    const getUserDetail = async () => {
+    const getRoleDetail = async () => {
         const updateId: number = Number(route.params.id);
-        await getUserDetailByIdApi(updateId).then(res => {
-            userDetail.value = res.data.data;
-            console.log(userDetail.value.roles)
+        await getRoleByIdApi(updateId).then(res => {
+            roleDetail.value = res.data.data;
         })
     }
     const updateUser = () => {
-        updateByIdApi(userDetail.value).then(res => {
+        updateRoleByIdApi(roleDetail.value).then(res => {
             console.log(res.data.data)
         });
         ElMessage.success('修改成功');
@@ -38,7 +36,7 @@ function useEdit() {
     const handleSubmit = () => {
         updateUser()
     }
-    return {userDetail, handleSubmit,cancel}
+    return {roleDetail, handleSubmit,cancel}
 }
 
 export default useEdit

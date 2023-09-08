@@ -3,25 +3,26 @@
 import {Delete, Edit, Search, Plus} from '@element-plus/icons-vue';
 import useList from "./ts/useList";
 
-let {tableData,detail,query,pageTable,handleSearch,handlePageChange,handleAdd,handleDelete}=useList();
+let {tableData,query,pageTable,detail,handleSearch,handlePageChange,handleAdd,handleDelete}=useList();
 
 </script>
 
 <template>
   <div class="handle-box">
-    <el-select v-model="query.enabled" placeholder="地址" class="handle-select mr10">
-      <el-option key="1" label="广东省" value="广东省"></el-option>
-      <el-option key="2" label="湖南省" value="湖南省"></el-option>
-    </el-select>
-    <el-input v-model="query.username" placeholder="用户名" class="handle-input mr10"></el-input>
+    <!--<el-select v-model="query.enabled" placeholder="地址" class="handle-select mr10">-->
+    <!--  <el-option key="1" label="广东省" value="广东省"></el-option>-->
+    <!--  <el-option key="2" label="湖南省" value="湖南省"></el-option>-->
+    <!--</el-select>-->
+    <el-input v-model="query.name" placeholder="用户名" class="handle-input mr10"></el-input>
     <el-button type="primary" :icon="Search" @click="handleSearch">搜索</el-button>
     <el-button type="primary" :icon="Plus" @click="handleAdd">新增</el-button>
   </div>
   <el-table :data="tableData" border class="table" ref="multipleTable" header-cell-class-name="table-header">
     <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-    <el-table-column prop="username" label="用户名"></el-table-column>
-    <el-table-column prop="password" label="密码"></el-table-column>
-    <el-table-column prop="enabled" label="是否激活"></el-table-column>
+    <el-table-column prop="name" label="权限名"></el-table-column>
+    <el-table-column prop="url" label="url模板"></el-table-column>
+    <el-table-column prop="method" label="请求方法"></el-table-column>
+    <el-table-column prop="desc" label="描述"></el-table-column>
     <el-table-column label="操作" width="220" align="center">
       <template #default="scope">
         <el-button text :icon="Edit" @click="detail(scope.row)" v-permiss="15">

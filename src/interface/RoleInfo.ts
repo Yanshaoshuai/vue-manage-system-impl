@@ -1,7 +1,10 @@
+import PermissionInfo from "./PermissionInfo";
+
 interface RoleInfo {
-    id:number;
+    id?:number;
+    permissions:PermissionInfo[];
     name: string;
     pid?: string;
-    description?: string;
+    description: string;
 }
 export default RoleInfo

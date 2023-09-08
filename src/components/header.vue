@@ -71,7 +71,7 @@ const handleCommand = (command: string) => {
 		localStorage.removeItem('ms_username');
 		router.push('/login');
 	} else if (command == 'user') {
-		router.push('/user');
+		router.push('/center');
 	}
 };
 </script>

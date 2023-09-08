@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Userdetail from "../../components/userdetail.vue";
+import Userdetail from "./userdetail.vue";
 import useEdit from "./ts/useEdit";
 let {userDetail,handleSubmit,cancel} = useEdit();
 

@@ -150,7 +150,7 @@ const items = [
   },
   {
     icon: 'Warning',
-    index: '/permission',
+    index: '/rbac',
     title: '权限管理',
     permiss: '13',
   },

@@ -23,7 +23,7 @@ const routes: RouteRecordRaw[] = [
             },
             {
                 path: '/user',
-                name: 'basetable',
+                name: 'user',
                 meta: {
                     title: '用户',
                     permiss: '2',
@@ -33,7 +33,7 @@ const routes: RouteRecordRaw[] = [
                 children:[
                     {
                         path: '/user/list',
-                        name: 'userlist',
+                        name: 'userList',
                         meta: {
                             title: '用户列表',
                             permiss: '2',
@@ -42,12 +42,12 @@ const routes: RouteRecordRaw[] = [
                     },
                     {
                         path: '/user/edit/:id',
-                        name: 'edituser',
+                        name: 'editUser',
                         meta: {
                             title: '编辑用户',
                             permiss: '2',
                         },
-                        component: () => import(/* webpackChunkName: "table" */ '../views/user/edituser.vue'),
+                        component: () => import(/* webpackChunkName: "table" */ '../views/user/edit.vue'),
                     },
                     {
                         path: '/user/add',
@@ -56,7 +56,85 @@ const routes: RouteRecordRaw[] = [
                             title: '添加用户',
                             permiss: '2',
                         },
-                        component: () => import(/* webpackChunkName: "table" */ '../views/user/adduser.vue'),
+                        component: () => import(/* webpackChunkName: "table" */ '../views/user/add.vue'),
+                    }
+                ]
+            },
+            {
+                path: '/role',
+                name: 'role',
+                meta: {
+                    title: '角色',
+                    permiss: '2',
+                },
+                redirect: '/role/list',
+                component: () => import(/* webpackChunkName: "table" */ '../views/role/role.vue'),
+                children:[
+                    {
+                        path: '/role/list',
+                        name: 'roleList',
+                        meta: {
+                            title: '角色列表',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/role/list.vue'),
+                    },
+                    {
+                        path: '/role/edit/:id',
+                        name: 'editRole',
+                        meta: {
+                            title: '编辑角色',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/role/edit.vue'),
+                    },
+                    {
+                        path: '/role/add',
+                        name: 'addRole',
+                        meta: {
+                            title: '添加角色',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/role/add.vue'),
+                    }
+                ]
+            },
+            {
+                path: '/permission',
+                name: 'permission',
+                meta: {
+                    title: '权限',
+                    permiss: '2',
+                },
+                redirect: '/permission/list',
+                component: () => import(/* webpackChunkName: "table" */ '../views/permission/permission.vue'),
+                children:[
+                    {
+                        path: '/permission/list',
+                        name: 'permissionList',
+                        meta: {
+                            title: '权限列表',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/permission/list.vue'),
+                    },
+                    {
+                        path: '/permission/edit/:id',
+                        name: 'editPermission',
+                        meta: {
+                            title: '编辑权限',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/permission/edit.vue'),
+                    },
+                    {
+                        path: '/permission/add',
+                        name: 'addPermission',
+                        meta: {
+                            title: '添加权限',
+                            permiss: '2',
+                        },
+                        component: () => import(/* webpackChunkName: "table" */ '../views/permission/add.vue'),
                     }
                 ]
             },
@@ -97,13 +175,13 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "donate" */ '../views/donate.vue'),
             },
             {
-                path: '/permission',
-                name: 'permission',
+                path: '/rbac',
+                name: 'rbac',
                 meta: {
                     title: '权限管理',
                     permiss: '13',
                 },
-                component: () => import(/* webpackChunkName: "permission" */ '../views/permission.vue'),
+                component: () => import(/* webpackChunkName: "permission" */ '../views/rbac.vue'),
             },
             {
                 path: '/upload',
@@ -124,12 +202,12 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "icon" */ '../views/icon.vue'),
             },
             {
-                path: '/user',
-                name: 'user',
+                path: '/center',
+                name: 'center',
                 meta: {
                     title: '个人中心',
                 },
-                component: () => import(/* webpackChunkName: "user" */ '../views/user/user.vue'),
+                component: () => import(/* webpackChunkName: "user" */ '../views/center.vue'),
             },
             {
                 path: '/editor',

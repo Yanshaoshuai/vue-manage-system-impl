@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Autocomplete: typeof import('./src/components/autocomplete.vue')['default']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElAvatar: typeof import('element-plus/es')['ElAvatar']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -46,10 +47,11 @@ declare module '@vue/runtime-core' {
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     ElUpload: typeof import('element-plus/es')['ElUpload']
     Header: typeof import('./src/components/header.vue')['default']
+    Roledetail: typeof import('./src/views/role/roledetail.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Sidebar: typeof import('./src/components/sidebar.vue')['default']
     Tags: typeof import('./src/components/tags.vue')['default']
-    Userdetail: typeof import('./src/components/userdetail.vue')['default']
+    Userdetail: typeof import('./src/views/user/userdetail.vue')['default']
   }
 }

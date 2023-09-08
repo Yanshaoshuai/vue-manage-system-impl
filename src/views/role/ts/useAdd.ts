@@ -1,16 +1,15 @@
 import {ref} from "vue";
-import UserInfo from "../../../interface/UserInfo";
 import {useRouter} from "vue-router";
 import {ElMessage} from "element-plus";
-import {addUserApi} from "../../../api/user";
+import RoleInfo from "../../../interface/RoleInfo";
+import {addRoleApi} from "../../../api/role";
 
 function useAdd(){
-    let userDetail = ref<UserInfo>(
+    let roleDetail = ref<RoleInfo>(
         {
-            username: "",
-            password: "",
-            roles: [],
-            enabled: false
+            name: "",
+            description:"",
+            permissions:[]
         }
     )
     let router = useRouter();
@@ -19,7 +18,7 @@ function useAdd(){
     }
 
     function addUser() {
-        addUserApi(userDetail.value).then(res => {
+        addRoleApi(roleDetail.value).then(res => {
             ElMessage.success('添加成功');
             router.go(-1);
         });
@@ -28,7 +27,7 @@ function useAdd(){
     const handleSubmit = () => {
         addUser()
     }
-    return {userDetail,handleSubmit,cancel}
+    return {roleDetail,handleSubmit,cancel}
 }
 
 export default useAdd
